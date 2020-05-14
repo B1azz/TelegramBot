@@ -1,5 +1,5 @@
 import requests
-from TelegramBot import config
+import config
 import datetime
 
 
@@ -21,7 +21,7 @@ class BotHandler:
         if len(get_result) > 0:
             last_update = get_result[-1]
         else:
-            last_update = get_result[len(get_result)]
+            last_update = None
 
         return last_update
 
@@ -66,6 +66,9 @@ def main():
             today += 1
 
         new_offset = last_update_id + 1
+
+        if last_update is None:
+            continue
 
 
 if __name__ == '__main__':
